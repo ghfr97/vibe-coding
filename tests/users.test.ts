@@ -38,7 +38,7 @@ describe('Users API', () => {
       );
 
       expect(res.status).toBe(200);
-      const body = await res.json();
+      const body = (await res.json()) as any;
       expect(body.data).toBe('OK');
     });
 
@@ -62,7 +62,7 @@ describe('Users API', () => {
       );
 
       expect(res.status).toBe(400);
-      const body = await res.json();
+      const body = (await res.json()) as any;
       expect(body.error).toBe('Email sudah terdaftar');
     });
 
@@ -100,7 +100,7 @@ describe('Users API', () => {
       );
 
       expect(res.status).toBe(200);
-      const body = await res.json();
+      const body = (await res.json()) as any;
       expect(body.data.token).toBeDefined();
     });
 
@@ -113,7 +113,7 @@ describe('Users API', () => {
       );
 
       expect(res.status).toBe(401);
-      const body = await res.json();
+      const body = (await res.json()) as any;
       expect(body.error).toBe('Email atau password salah');
     });
   });
@@ -138,7 +138,7 @@ describe('Users API', () => {
         })
       );
       
-      const body = await loginRes.json();
+      const body = (await loginRes.json()) as any;
       token = body.data.token;
     });
 
@@ -148,7 +148,7 @@ describe('Users API', () => {
       );
 
       expect(res.status).toBe(200);
-      const body = await res.json();
+      const body = (await res.json()) as any;
       expect(body.data.email).toBe('auth@example.com');
       expect(body.data.name).toBe('Auth User');
     });
